@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat Test</title>
+	<style>
+		#chatBox {height: 500px;}
+	</style>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<div id="chatBox"></div>
+	<form id="sendMessage">
+		<input size="35" id="message">
+		<input type="submit">
+	</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	jQuery(function($){
+		var socket = io.connect();
+		var $messageForm = $('#sendMessage');
+		var $messageBox = $('#message');
+		var $chat = $('#chatBox');
+		
+		$messageForm.submit(function(e){
+			e.preventDefault();
+			socket.emit('send message', $messageBox.val());
+			$messageBox.val('');
+		});
+		
+		socket.on('new message', function(data){
+			$chat.append(data + "<br/>");
+		});
+	});
+</script>
+
+</body>
+</html>

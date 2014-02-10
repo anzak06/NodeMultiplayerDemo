@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Scratch</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+	    <script src="/js/framework.js"></script>
+	    <script src="/js/CanvasInput.min.js"></script>
+	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<!-- <link rel='stylesheet' href='css/screen.css'> -->
+	</head>
+	<body>
+		<div id="loginWrapper">
+			<form id="loginForm">
+				<input size="35" id="nameField">
+				<input type="submit"> <br />
+				<p>Select a sprite!</p>
+				<input type="radio" name="sprite" value="female">Female</input> <br />
+				<input type="radio" name="sprite" value="male">Male</input>
+			</form>
+		</div>
+		<div id="canvasWrapper">
+			<canvas id="canvas" height="650" width="700"></canvas>
+			<canvas id="canvasUi" height="650" width="700"></canvas>
+			<br />
+			<form id="msgForm">
+				<input size="35" id="msgField">
+				<input type="submit">
+			</form>
+		</div>
+		<script src="socket.io/socket.io.js"></script>
+		<script src="/js/main.js"></script>
+	</body>
+</html>
