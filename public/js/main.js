@@ -117,9 +117,14 @@ $(document).ready(function(){
 
 	$('#msgForm').submit(function(e){
 		e.preventDefault();
+		if ($('#msgField').val() === "") {
+			$('#msgField').blur();
+			return;
+		}
 		socket.emit('send dialog', username, $('#msgField').val());
 		$('#msgField').val("");
 		$('#canvas').focus();
+		$('#msgField').blur();
 		enterChatTime = new Date();
 		gameFocus = true;
 	});
@@ -131,6 +136,9 @@ $(document).ready(function(){
 	$('#msgField').focusout(function(){
 		gameFocus = true;
 	});
+
+//});
+
 });
 
 
@@ -320,6 +328,7 @@ function update() {
 
 		if (input.enter == true && gameFocus === true && (gameTime.getTime() - enterChatTime.getTime()) > 1000) {
 			$('#msgField').focus();
+			console.log("entering chat");
 			gameFocus = false;
 		};
 	}
